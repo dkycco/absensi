@@ -1,0 +1,111 @@
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Data Siswa</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4 mb-3">
+                            <div class="col-sm-auto">
+                                <div>
+                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
+                                        id="create-btn" data-bs-target="#addModal"><i
+                                            class="ri-add-line align-bottom me-1"></i> Tambah Siswa</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="scroll-horizontal" class="table nowrap align-middle" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>ID Sidik Jari</th>
+                                    <th>NISN</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Kelas</th>
+                                    <th>Nama Orang Tua</th>
+                                    <th>No HP Orang Tua</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light p-3">
+                        <h5 class="modal-title" id="addModal">Tambah Siswa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="close-modal"></button>
+                    </div>
+                    <form class="tablelist-form needs-validation" novalidate autocomplete="off">
+                        <div class="modal-body">
+                            <div class="mb-3" id="modal-id">
+                                <label for="id-field" class="form-label">ID Sidik Jari</label>
+                                <input type="number" id="id-field" class="form-control"
+                                    placeholder="Masukan ID Sidik jari." required />
+                                <div class="invalid-feedback">Masukan ID sidik jari.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nisn-field" class="form-label">NISN</label>
+                                <input type="number" id="nisn-field" class="form-control" placeholder="Masukan NISN."
+                                    required />
+                                <div class="invalid-feedback">Masukan NISN.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="name-field" class="form-label">Nama Lengkap</label>
+                                <input type="text" id="name-field" class="form-control"
+                                    placeholder="Masukan nama Lengkap." required />
+                                <div class="invalid-feedback">Masukan nama lengkap.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Kelas</label>
+                                <select class="form-control js-example-basic-single" name="kelas" required>
+                                    <option value="" selected disabled>Pilih Kelas</option>
+                                    <optgroup label="Category">
+                                        <option value="">Select 1</option>
+                                        <option value="">Select 2</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="parents-name-field" class="form-label">Nama Orang Tua</label>
+                                <input type="text" id="parents-name-field" class="form-control"
+                                    placeholder="Masukan nama Orang Tua" required />
+                                <div class="invalid-feedback">Masukan nama Orang Tua.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="parents-phone-field" class="form-label">No HP Orang Tua</label>
+                                <input type="number" id="parents-phone-field" class="form-control" placeholder="Masukan No HP Orang Tua."
+                                    required />
+                                <div class="invalid-feedback">Masukan No HP Orang Tua.</div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-success" id="add-btn">
+                                    <i class="mdi mdi-content-save-all-outline"></i>
+                                    Simpan Data</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
