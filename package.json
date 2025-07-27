@@ -1,9 +1,18 @@
 {
-  "dependencies": {
-    "dotenv": "^17.2.1",
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "express-ejs-layouts": "^2.5.1",
-    "mysql": "^2.18.1"
-  }
+    "dependencies": {
+        "dayjs": "^1.11.13",
+        "dotenv": "^17.2.1",
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "express-ejs-layouts": "^2.5.1",
+        "mysql2": "^3.14.2",
+        "sequelize": "^6.37.7"
+    },
+    "scripts": {
+        "migrate": "node scripts/migrate.js",
+        "seed": "node scripts/seed.js",
+        "migrate:fresh": "node scripts/migrate-seed.js",
+        "make:migration": "node tools/make.js migration",
+        "make:seeder": "node tools/make.js seeder"
+    }
 }
