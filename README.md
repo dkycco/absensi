@@ -16,10 +16,3 @@ Sebuah aplikasi web sederhana untuk sistem absensi, dibangun dengan **Express.js
 | Env Config             | dotenv                    |
 
 ---
-
-## 📦 Installation
-
-```bash
-git clone <repo-ini>
-cd project_absensi
-npm install
