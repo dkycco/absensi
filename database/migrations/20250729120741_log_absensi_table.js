@@ -17,6 +17,10 @@ module.exports = {
           key: 'nisn'
         }
       },
+      status_siswa: {
+        type: Sequelize.ENUM('hadir', 'pulang'),
+        allowNull: false
+      },
       status_pesan: {
         type: Sequelize.ENUM('pending', 'terkirim', 'gagal'),
         allowNull: false,

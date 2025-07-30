@@ -12,6 +12,7 @@ LogAbsensi.init({
     type: DataTypes.STRING,
     allowNull: false
   },
+  status_siswa: DataTypes.ENUM('hadir', 'pulang'),
   status_pesan: DataTypes.ENUM('pending', 'terkirim', 'gagal'),
   pesan: DataTypes.TEXT,
   created_at: DataTypes.DATE

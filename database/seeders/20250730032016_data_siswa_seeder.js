@@ -10,7 +10,7 @@ module.exports = {
         nama_lengkap: 'Diki Muhamad Alfikri',
         kelas: 'XII RPL',
         nama_orangtua_wali: 'Nana',
-        no_hp: '081395564815',
+        no_hp: '6281395564815',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       }
