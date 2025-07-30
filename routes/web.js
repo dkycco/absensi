@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require('../app/controllers/UserController');
-const AbsensiController = require('../app/controllers/AbsensiController');
+const LogAbsensiController = require('../app/controllers/LogAbsensiController');
 
 router.get('/users', UserController.index);
 
-router.get('/absensi', AbsensiController.index);
+router.get('/log-absensi', LogAbsensiController.index);
+router.post('/log-absensi', LogAbsensiController.store);
 
 module.exports = router;
