@@ -24,6 +24,6 @@ Thumbs.db
 .idea/
 *.swp
 
-# Build artifacts (jika ada)
+# Build artifacts
 dist/
 build/

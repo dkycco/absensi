@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'app/views'));
 app.use(expressLayouts);
-app.set('layout', 'layouts/main-layout');
+// app.set('layout', 'layouts/main-layout');
 
 // ============ Global Services ============
 app.set('io', io);

@@ -1,0 +1,50 @@
+<div class="row">
+   <div class="col-md-6-lg-12">
+      <div class="card">
+         <div class="card-header">
+            <h5 class="card-title mb-0">Data Siswa</h5>
+         </div>
+         <div class="card-body">
+            <div class="row g-4 mb-3">
+               <div class="col-md-6">
+                  <div>
+<!-- Ubah jadi seperti ini -->
+<button type="button" class="btn btn-success" id="btnTambahSiswa" data-bs-toggle="modal" data-bs-target="#formDataSiswa">
+  <i class="ri-add-line align-bottom me-1"></i> Absensi Manual
+</button>
+
+                  </div>
+               </div>
+               <table id="scroll-horizontal" class="table nowrap align-middle" style="width:100%">
+                  <thead>
+                     <tr>
+                        <th>ID Sidik Jari</th>
+                        <th>NISN</th>
+                        <th>Nama Lengkap</th>
+                        <th>Kelas</th>
+                        <th>Waktu</th>
+                        <th>Status Pesan</th>
+                        <th>Aksi</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+'use strict'
+
+document.getElementById('btnTambahSiswa').addEventListener('click', async () => {
+    const response = await fetch('/data-siswa/create');
+    const html = await response.text();
+    document.getElementById('modalContainer').innerHTML = html;
+    // Tidak perlu modal.show()
+});
+
+</script>

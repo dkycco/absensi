@@ -1,170 +1,171 @@
 <div class="page-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Log Absensi Hari Ini</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row g-4 mb-3">
-                            <div class="col-sm-auto">
-                                <div>
-                                    <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
-                                        id="create-btn" data-bs-target="#addAttendance"><i
-                                            class="ri-add-line align-bottom me-1"></i> Absensi Manual</button>
-                                </div>
-                            </div>
-                            <table id="scroll-horizontal" class="table nowrap align-middle" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID Sidik Jari</th>
-                                        <th>NISN</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Kelas</th>
-                                        <th>Waktu</th>
-                                        <th>Status Pesan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% log_absensi.forEach(row => {  %>
-                                    <tr>
-                                        <td><%= row.siswa?.id_sidik_jari %></td>
-                                        <td><%= row.siswa?.nisn %></td>
-                                        <td><%= row.siswa?.nama_lengkap || '-' %></td>
-                                        <td><%= row.siswa?.kelas || '-' %></td>
-                                        <td>
-                                            <%= new Date(row.created_at).toLocaleTimeString('id-ID', {
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="card">
+               <div class="card-header">
+                  <h5 class="card-title mb-0">Log Absensi Hari Ini</h5>
+               </div>
+               <div class="card-body">
+                  <div class="row g-4 mb-3">
+                     <div class="col-sm-auto">
+                        <div>
+                           <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn"
+                              data-bs-target="#addAttendance"><i class="ri-add-line align-bottom me-1"></i> Absensi
+                              Manual</button>
+                        </div>
+                     </div>
+                     <table id="scroll-horizontal" class="table nowrap align-middle" style="width:100%">
+                        <thead>
+                           <tr>
+                              <th>ID Sidik Jari</th>
+                              <th>NISN</th>
+                              <th>Nama Lengkap</th>
+                              <th>Kelas</th>
+                              <th>Waktu</th>
+                              <th>Status Pesan</th>
+                              <th>Aksi</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <% log_absensi.forEach(row => {  %>
+                           <tr>
+                              <td><%= row.siswa?.id_sidik_jari %></td>
+                              <td><%= row.siswa?.nisn %></td>
+                              <td><%= row.siswa?.nama_lengkap || '-' %></td>
+                              <td><%= row.siswa?.kelas || '-' %></td>
+                              <td>
+                                 <%= new Date(row.created_at).toLocaleTimeString('id-ID', {
                                             hour: '2-digit',
                                             minute: '2-digit'
                                         }) %>
-                                        </td>
-                                        <td><%= row.status_pesan %></td>
-                                        <td><%= row.status_pesan %></td>
-                                    </tr>
-                                    <% }) %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                              </td>
+                              <td><%= row.status_pesan %></td>
+                              <td><%= row.status_pesan %></td>
+                           </tr>
+                           <% }) %>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
             </div>
+         </div>
 
-            <div class="modal fade" id="addAttendance" tabindex="-1"  role="dialog" aria-labelledby="addAttendance" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header bg-light p-3">
-                            <h5 class="modal-title" id="addAttendance">Absensi Manual</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                id="close-modal"></button>
+         <div class="modal fade" id="addAttendance" tabindex="-1" role="dialog" aria-labelledby="addAttendance"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+               <div class="modal-content">
+                  <div class="modal-header bg-light p-3">
+                     <h5 class="modal-title" id="addAttendance">Absensi Manual</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="close-modal"></button>
+                  </div>
+                  <form class="tablelist-form needs-validation" id="formAbsensiManual" novalidate autocomplete="off"
+                     action="/log-absensi" method="POST">
+                     <div class="modal-body">
+
+                        <div class="mb-5">
+                           <label class="form-label" for="cari_nama">Cari nama</label>
+                           <select class="js-example-basic-single" name="nisn" id="cari_nama">
+                              <option value="" selected disabled>Pilih nama</option>
+                              <% siswa_list.forEach(s => { %>
+                              <option value="<%= s.nisn %>"><%= s.nama_lengkap %> (<%= s.kelas %>)</option>
+                              <% }) %>
+                           </select>
                         </div>
-                        <form class="tablelist-form needs-validation" id="formAbsensiManual" novalidate
-                            autocomplete="off" action="/log-absensi" method="POST">
-                            <div class="modal-body">
 
-                                <div class="mb-5">
-                                    <label class="form-label" for="cari_nama">Cari nama</label>
-                                    <select class="js-example-basic-single" name="nisn" id="cari_nama">
-                                        <option value="" selected disabled>Pilih nama</option>
-                                        <% siswa_list.forEach(s => { %>
-                                        <option value="<%= s.nisn %>"><%= s.nama_lengkap %> (<%= s.kelas %>)</option>
-                                        <% }) %>
-                                    </select>
-                                </div>
+                        <div class="mb-3">
+                           <h5 class="fs-15">Data Siswa</h5>
+                        </div>
 
-                                <div class="mb-3">
-                                    <h5 class="fs-15">Data Siswa</h5>
-                                </div>
+                        <div class="mb-3">
+                           <label class="form-label" for="nama_lengkap">Nama Lengkap</label>
+                           <input class="form-control" type="text" id="nama_lengkap" readonly>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama_lengkap">Nama Lengkap</label>
-                                    <input class="form-control" type="text" id="nama_lengkap" readonly>
-                                </div>
+                        <div class="mb-3">
+                           <label class="form-label" for="nisn">NISN</label>
+                           <input class="form-control" type="text" id="nisn" readonly>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="nisn">NISN</label>
-                                    <input class="form-control" type="text" id="nisn" readonly>
-                                </div>
+                        <div class="mb-3">
+                           <label class="form-label" for="kelas">Kelas</label>
+                           <input class="form-control" type="text" id="kelas" readonly>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="kelas">Kelas</label>
-                                    <input class="form-control" type="text" id="kelas" readonly>
-                                </div>
+                        <div class="mb-3">
+                           <label class="form-label" for="nama_orangtua_wali">Nama Orang Tua/Wali</label>
+                           <input class="form-control" type="text" id="nama_orangtua_wali" readonly>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama_orangtua_wali">Nama Orang Tua/Wali</label>
-                                    <input class="form-control" type="text" id="nama_orangtua_wali" readonly>
-                                </div>
+                        <div class="mb-3">
+                           <label class="form-label" for="no_hp">No Headphone</label>
+                           <input class="form-control" type="text" id="no_hp" readonly>
+                        </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label" for="no_hp">No Headphone</label>
-                                    <input class="form-control" type="text" id="no_hp" readonly>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-success" id="add-btn">
-                                        <i class="mdi mdi-content-save-all-outline"></i>
-                                        Simpan Data</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                     </div>
+                     <div class="modal-footer">
+                        <div class="hstack gap-2 justify-content-end">
+                           <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+                           <button type="submit" class="btn btn-success" id="add-btn">
+                              <i class="mdi mdi-content-save-all-outline"></i>
+                              Simpan Data</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
             </div>
+         </div>
 
-        </div>
-    </div>
+      </div>
+   </div>
 </div>
 
 <script>
-    $(document).ready(function () {
-        const siswaData = <%- JSON.stringify(siswa_list) %>;
+   $(document).ready(function () {
+      const siswaData = <%- JSON.stringify(siswa_list) %>;
 
-        $('#cari_nama').on('change', function () {
-            const selectedNISN = $(this).val();
-            const siswa = siswaData.find(s => s.nisn === selectedNISN);
-            if (siswa) {
-                $('#nama_lengkap').val(siswa.nama_lengkap);
-                $('#nisn').val(siswa.nisn);
-                $('#kelas').val(siswa.kelas);
-                $('#nama_orangtua_wali').val(siswa.nama_orangtua_wali);
-                $('#no_hp').val(siswa.no_hp);
-            }
-        });
-    });
+      $('#cari_nama').on('change', function () {
+         const selectedNISN = $(this).val();
+         const siswa = siswaData.find(s => s.nisn === selectedNISN);
+         if (siswa) {
+            $('#nama_lengkap').val(siswa.nama_lengkap);
+            $('#nisn').val(siswa.nisn);
+            $('#kelas').val(siswa.kelas);
+            $('#nama_orangtua_wali').val(siswa.nama_orangtua_wali);
+            $('#no_hp').val(siswa.no_hp);
+         }
+      });
+   });
 </script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    const socket = io();
+   const socket = io();
 
-    socket.on('absensi:baru', async function (payload) {
-        const {
-            nisn
-        } = payload;
-        // console.log('📡 Absensi masuk dari:', nisn);
+   socket.on('absensi:baru', async function (payload) {
+      const {
+         nisn
+      } = payload;
+      // console.log('📡 Absensi masuk dari:', nisn);
 
-        const res = await fetch(`/api/absensi/${nisn}`);
-        const data = await res.json();
+      const res = await fetch(`/api/absensi/${nisn}`);
+      const data = await res.json();
 
-        const siswa = data.siswa || {
-            nama_lengkap: '-',
-            kelas: '-',
-            nama_orangtua_wali: '-',
-            no_hp: '-'
-        };
+      const siswa = data.siswa || {
+         nama_lengkap: '-',
+         kelas: '-',
+         nama_orangtua_wali: '-',
+         no_hp: '-'
+      };
 
-        const waktu = new Date(data.created_at).toLocaleTimeString('id-ID', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+      const waktu = new Date(data.created_at).toLocaleTimeString('id-ID', {
+         hour: '2-digit',
+         minute: '2-digit'
+      });
 
-        const row = document.createElement('tr');
-        row.innerHTML = `
+      const row = document.createElement('tr');
+      row.innerHTML = `
             <td>${siswa.id_sidik_jari}</td>
             <td>${data.nisn}</td>
             <td>${siswa.nama_lengkap}</td>
@@ -174,78 +175,78 @@
             <td>pending</td>
         `;
 
-        document.querySelector('#scroll-horizontal tbody').prepend(row);
-    });
+      document.querySelector('#scroll-horizontal tbody').prepend(row);
+   });
 </script>
 
 <script>
-  socket.on('absensi:toast', payload => {
-    const message = payload.message || 'Absensi berhasil';
-    const type = payload.type || 'success';
-    showToastify(message, type);
-  });
+   socket.on('absensi:toast', payload => {
+      const message = payload.message || 'Absensi berhasil';
+      const type = payload.type || 'success';
+      showToastify(message, type);
+   });
 
-  function showToastify(message, type = 'success') {
-    let bgColor = '#45CB85';
+   function showToastify(message, type = 'success') {
+      let bgColor = '#45CB85';
 
-    if (type === 'danger') bgColor = '##ffbe0b';
-    else if (type === 'warning') bgColor = '#f06548';
-    else if (type === 'info') bgColor = '#878a99';
+      if (type === 'danger') bgColor = '##ffbe0b';
+      else if (type === 'warning') bgColor = '#f06548';
+      else if (type === 'info') bgColor = '#878a99';
 
-    Toastify({
-      text: message,
-      duration: 3000,
-      gravity: 'top',
-      position: 'right',
-      close: true,
-      stopOnFocus: true,
-      style: {
-        background: bgColor,
-        borderRadius: '8px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-        color: '#fff',
-        fontSize: '14px',
+      Toastify({
+         text: message,
+         duration: 3000,
+         gravity: 'top',
+         position: 'right',
+         close: true,
+         stopOnFocus: true,
+         style: {
+            background: bgColor,
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+            color: '#fff',
+            fontSize: '14px',
+         }
+      }).showToast();
+   }
+</script>
+
+
+<script>
+   const form = document.getElementById('formAbsensiManual');
+
+   form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+         const res = await fetch('/log-absensi', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+         });
+
+         if (!res.ok) {
+            const err = await res.text();
+            showLiveToast(err, 'warning');
+            return;
+         }
+
+         // const result = await res.json();
+
+         document.activeElement?.blur();
+
+         const modal = bootstrap.Modal.getInstance(document.getElementById('addAttendance'));
+         modal.hide();
+
+         form.reset();
+      } catch (err) {
+         console.error(err);
+         showToastify('Absensi Gagal Terkirim', 'danger');
       }
-    }).showToast();
-  }
-</script>
-
-
-<script>
-    const form = document.getElementById('formAbsensiManual');
-
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-            const res = await fetch('/log-absensi', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (!res.ok) {
-                const err = await res.text();
-                showLiveToast(err, 'warning');
-                return;
-            }
-
-            // const result = await res.json();
-
-            document.activeElement?.blur();
-
-            const modal = bootstrap.Modal.getInstance(document.getElementById('addAttendance'));
-            modal.hide();
-
-            form.reset();
-        } catch (err) {
-            console.error(err);
-            showToastify('Absensi Gagal Terkirim', 'danger');
-        }
-    });
+   });
 </script>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
     data-sidebar-image="none" data-preloader="disable">
 
@@ -47,7 +47,13 @@
 
         <div class="main-content">
 
-            <%- body %>
+            <div class="page-content">
+                <div class="container-fluid">
+                    <%- body %>
+
+                    <div id="modalContainer"></div>
+                </div>
+            </div>
 
             <%- include('footer') %>
 
@@ -120,17 +126,9 @@
     <script src="./assets/libs/jsvectormap/maps/world-merc.js"></script>
     <script src="./assets/libs/swiper/swiper-bundle.min.js"></script>
     <script src="./assets/js/pages/dashboard-ecommerce.init.js"></script>
+    <script src="./assets/js/pages/form-validation.init.js"></script>
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/main.js"></script>
-
-    <script>
-        $('#addAttendance').on('shown.bs.modal', function () {
-            $('.js-example-basic-single').select2({
-                dropdownParent: $('#addAttendance'),
-                minimumResultsForSearch: 0
-            });
-        });
-    </script>
 </body>
 
 </html>

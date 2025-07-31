@@ -27,11 +27,20 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
+                <li class="menu-title"><span data-key="t-data">Data</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="/log_absensi">
-                        <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-log_absensi">Log Absensi</span>
+                    <a class="nav-link menu-link <%= currentController === 'data_siswa.index' ? 'active' : '' %>" href="/data-siswa">
+                        <i class="mdi mdi-account-group-outline"></i> <span data-key="t-data-siswa">Data Siswa</span>
+                    </a>
+                </li>
+                
+                <li class="menu-title"><span data-key="t-absensi">Absensi</span></li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link <%= currentController === 'log_absensi.index' ? 'active' : '' %>" href="/log-absensi">
+                        <i class="mdi mdi-book-clock-outline"></i> <span data-key="t-log-absensi">Log Absensi</span>
                     </a>
                 </li>
 
