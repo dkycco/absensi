@@ -1,0 +1,13 @@
+2025/07/31-07:24:05.132 f78 Reusing MANIFEST F:\Diki\Web\absensi\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/07/31-07:24:05.132 f78 Recovering log #89
+2025/07/31-07:24:05.160 f78 Reusing old log F:\Diki\Web\absensi\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000089.log 
+2025/07/31-07:24:08.118 e4c Level-0 table #94: started
+2025/07/31-07:24:08.157 e4c Level-0 table #94: 173509 bytes OK
+2025/07/31-07:24:08.196 e4c Delete type=0 #89
+2025/07/31-07:24:08.196 dd4 Manual compaction at level-0 from '\x00-\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00.\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/07/31-07:24:10.499 2108 Compacting 1@1 + 1@2 files
+2025/07/31-07:24:10.608 2108 Generated table #95@1: 34855 keys, 1147831 bytes
+2025/07/31-07:24:10.608 2108 Compacted 1@1 + 1@2 files => 1147831 bytes
+2025/07/31-07:24:10.632 2108 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/07/31-07:24:10.633 2108 Delete type=2 #91
+2025/07/31-07:24:10.633 2108 Delete type=2 #94
