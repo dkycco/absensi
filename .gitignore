@@ -6,8 +6,8 @@
 .env.*
 
 # WhatsApp Web.js Auth & Cache
-/wwebjs_auth/
-/wwebjs_cache/
+/.wwebjs_auth/
+/.wwebjs_cache/
 
 # Logs
 npm-debug.log*
