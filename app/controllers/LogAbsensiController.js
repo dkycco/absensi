@@ -1,6 +1,5 @@
 const DataSiswa = require('../models/DataSiswa');
 const LogAbsensi = require('../models/LogAbsensi');
-const whatsappClient = require('../../services/whatsapp');
 const {
   Op
 } = require('sequelize');
@@ -103,17 +102,17 @@ module.exports = {
     });
 
     // Kirim pesan WhatsApp
-    if (siswa?.no_hp) {
-      const phone = siswa.no_hp.replace(/[^0-9]/g, '') + '@c.us';
-      const message = `📋 Absensi: ${status_siswa.toUpperCase()}\nNama: ${siswa.nama_lengkap}\nKelas: ${siswa.kelas}\nWaktu: ${dayjs(created.created_at).format('HH:mm')}`;
+    // if (siswa?.no_hp) {
+    //   const phone = siswa.no_hp.replace(/[^0-9]/g, '') + '@c.us';
+    //   const message = `📋 Absensi: ${status_siswa.toUpperCase()}\nNama: ${siswa.nama_lengkap}\nKelas: ${siswa.kelas}\nWaktu: ${dayjs(created.created_at).format('HH:mm')}`;
 
-      try {
-        await whatsappClient.sendMessage(phone, message);
-        await created.update({ status_pesan: 'terkirim' });
-      } catch (err) {
-        await created.update({ status_pesan: 'gagal' });
-      }
-    }
+    //   try {
+    //     await whatsappClient.sendMessage(phone, message);
+    //     await created.update({ status_pesan: 'terkirim' });
+    //   } catch (err) {
+    //     await created.update({ status_pesan: 'gagal' });
+    //   }
+    // }
 
     // Kirim respons akhir
     res.status(201).json({

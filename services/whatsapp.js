@@ -10,12 +10,12 @@ const client = new Client({
 });
 
 client.on('qr', qr => {
-  console.log('Scan QR ini dengan WhatsApp:');
+  console.log('Scan this QR on your Whatsapp:');
   qrcode.generate(qr, { small: true });
 });
 
 client.on('ready', () => {
-  console.log('WhatsApp Client sudah siap!');
+  console.log('WhatsApp Client is ready!');
 });
 
 client.initialize();

@@ -1,13 +1,4 @@
-2025/07/30-11:31:07.815 2140 Reusing MANIFEST F:\Diki\Web\absensi\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/07/30-11:31:07.815 2140 Recovering log #69
-2025/07/30-11:31:07.836 2140 Reusing old log F:\Diki\Web\absensi\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000069.log 
-2025/07/30-11:31:11.100 1f1c Level-0 table #74: started
-2025/07/30-11:31:11.148 1f1c Level-0 table #74: 111487 bytes OK
-2025/07/30-11:31:11.189 1f1c Delete type=0 #69
-2025/07/30-11:31:11.189 1f1c Manual compaction at level-0 from '\x00%\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00&\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/07/30-11:31:13.813 3324 Compacting 1@1 + 1@2 files
-2025/07/30-11:31:13.896 3324 Generated table #75@1: 28314 keys, 990319 bytes
-2025/07/30-11:31:13.896 3324 Compacted 1@1 + 1@2 files => 990319 bytes
-2025/07/30-11:31:13.924 3324 compacted to: files[ 0 0 1 0 0 0 0 ]
-2025/07/30-11:31:13.924 3324 Delete type=2 #71
-2025/07/30-11:31:13.924 3324 Delete type=2 #74
+2025/07/31-07:23:56.743 320c Reusing MANIFEST F:\Diki\Web\absensi\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/07/31-07:23:56.744 320c Recovering log #89
+2025/07/31-07:23:56.762 320c Reusing old log F:\Diki\Web\absensi\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000089.log 
+2025/07/31-07:23:59.928 3080 Manual compaction at level-0 from '\x00,\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00-\x00\x00\x00' @ 0 : 0; will stop at (end)
