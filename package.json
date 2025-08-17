@@ -1,0 +1,22 @@
+{
+   "dependencies": {
+      "axios": "^1.11.0",
+      "bcryptjs": "^3.0.2",
+      "dayjs": "^1.11.13",
+      "dotenv": "^17.2.1",
+      "ejs": "^3.1.10",
+      "express": "^5.1.0",
+      "express-ejs-layouts": "^2.5.1",
+      "express-session": "^1.18.2",
+      "express-validator": "^7.2.1",
+      "morgan": "^1.10.1",
+      "mysql2": "^3.14.3",
+      "sequelize": "^6.37.7",
+      "socket.io": "^4.8.1"
+   },
+   "scripts": {
+      "migrate:fresh": "node tools/migrate-seed.js",
+      "make:migration": "node tools/make.js migration",
+      "make:seeder": "node tools/make.js seeder"
+   }
+}
