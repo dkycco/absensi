@@ -12,6 +12,10 @@ const APILogAbsensiController = require('../app/controllers/APILogAbsensiControl
 
 const { ensureAuthenticated, authorizeRoles } = require('../middleware/authMiddleware');
 
+router.get('/', (req, res) => {
+   res.redirect('/login');
+});
+
 router.get('/login', LoginController.index);
 router.post('/login', LoginController.login);
 router.get('/logout', LoginController.logout);

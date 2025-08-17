@@ -12,7 +12,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(session({
-    secret: 'abc',
+    secret: 'qwerty',
     resave: false,
     saveUninitialized: false
 }));
