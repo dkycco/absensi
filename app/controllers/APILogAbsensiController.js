@@ -3,6 +3,7 @@ const DataSiswa = require('../models/DataSiswa');
 const APIKey = require('../models/APIKey');
 const { Op } = require('sequelize');
 const dayjs = require('dayjs');
+const axios = require('axios')
 
 const now = dayjs();
 const todayStart = now.startOf('day').toDate();
@@ -14,14 +15,13 @@ module.exports = {
       const {
          api_key,
          status_siswa,
-         nisn
+         id_sidik_jari
       } = req.body;
       const dataSiswa = await DataSiswa.findOne({
          where: {
-            nisn
+            id_sidik_jari
          }
       });
-      const phone = dataSiswa.no_hp.replace(/[^0-9]/g, '') + '@c.us';
 
       function textFormating(str) {
          const lines = str.split('\n');
@@ -29,15 +29,11 @@ module.exports = {
          return trimmedLines.join('\n').trim();
       }
 
-      function delay(ms) {
-         return new Promise(resolve => setTimeout(resolve, ms));
-      }
-
       try {
 
-         if (!api_key || !status_siswa || !nisn) {
+         if (!api_key || !status_siswa || !id_sidik_jari) {
             return res.status(400).json({
-               message: 'api_key, status, dan nisn wajib diisi'
+               message: 'api_key, status_siswa, dan id_sidik_jari wajib diisi'
             });
          }
 
@@ -62,7 +58,7 @@ module.exports = {
 
          const existing = await LogAbsensi.findOne({
             where: {
-               nisn,
+               nisn: dataSiswa.nisn,
                status_siswa,
                created_at: {
                   [Op.between]: [todayStart, todayEnd]
@@ -73,12 +69,12 @@ module.exports = {
             ]
          });
 
-         if (existing) {
-            return res.status(409).json({
-               message: 'Siswa sudah absen hari ini!',
-               type: 'warning'
-            });
-         }
+         // if (existing) {
+         //    return res.status(409).json({
+         //       message: 'Siswa sudah absen hari ini!',
+         //       type: 'warning'
+         //    });
+         // }
 
          const waktu = new Date().toLocaleTimeString('id-ID', {
             hour: '2-digit',
@@ -92,7 +88,6 @@ module.exports = {
             year: 'numeric'
          })
 
-
          let pesan = '';
 
          if (status_siswa === 'hadir') {
@@ -103,7 +98,7 @@ module.exports = {
 
                     Nama: ${dataSiswa.nama_lengkap}
                     Kelas: ${dataSiswa.kelas.replace(/_/g, ' ').toUpperCase()}
-                    NISN: ${nisn}
+                    NISN: ${dataSiswa.nisn}
 
                     Telah tercatat *hadir* di sekolah secara sistem pada pukul: *${waktu}*, tanggal: *${tanggal}*.
 
@@ -117,7 +112,7 @@ module.exports = {
 
                     Nama: ${dataSiswa.nama_lengkap}
                     Kelas: ${dataSiswa.kelas.replace(/_/g, ' ').toUpperCase()}
-                    NISN: ${nisn}
+                    NISN: ${dataSiswa.nisn}
 
                     Telah tercatat *pulang* dari sekolah secara sistem pada pukul: *${waktu}*, tanggal *${tanggal}*.
 
@@ -128,30 +123,28 @@ module.exports = {
          }
 
          const log = await LogAbsensi.create({
-            nisn,
+            nisn: dataSiswa.nisn,
             status_siswa: status_siswa,
             status_pesan: 'pending',
             pesan
          });
 
-         // if (dataSiswa.no_hp) {
-         //     try {
-         //         await delay(3000);
-         //         await whatsappClient.sendMessage(phone, pesan)
-         //         await log.update({ status_pesan: 'terkirim' });
+         try {
+            await axios.post("http://server.smkkorpri-sumedang.sch.id:3010/api/whatsapp", {
+               api_key: process.env.WHATSAPP_API_KEY,
+               no_hp: dataSiswa.no_hp,
+               pesan
+            }, {
+               headers: {
+                  "Content-Type": "application/json"
+               }
+            });
 
-         //         io.emit('push:toast', {
-         //             message: `Pesan terkirim ke ${dataSiswa.no_hp}`,
-         //             type: 'success'
-         //         });
-         //     } catch (error) {
-         //         await log.update({ status_pesan: 'gagal' });
-         //         return res.status(500).json({
-         //             message: `Pesan gagal terkirim ke ${dataSiswa.no_hp}`,
-         //             type: 'warning'
-         //         });
-         //     }
-         // }
+            await log.update({ status_pesan: "terkirim" });
+         } catch (err) {
+            console.log(err);
+            await log.update({ status_pesan: "gagal" });
+         }
 
          io.emit('log-absensi:baru', {
             id: log.id,
@@ -160,7 +153,7 @@ module.exports = {
             kelas: dataSiswa.kelas,
             waktu,
             status_siswa,
-            status_pesan: 'pending'
+            status_pesan: log.status_pesan
          });
 
          io.emit('push:toast', {
@@ -170,11 +163,10 @@ module.exports = {
 
          return res.status(201).json({
             message: 'Log absensi berhasil ditambahkan',
-            data: log
+            nama_lengkap: dataSiswa.nama_lengkap
          });
 
       } catch (error) {
-         console.error(error);
          return res.status(500).json({
             message: 'Terjadi kesalahan pada server'
          });
