@@ -69,12 +69,12 @@ module.exports = {
             ]
          });
 
-         // if (existing) {
-         //    return res.status(409).json({
-         //       message: 'Siswa sudah absen hari ini!',
-         //       type: 'warning'
-         //    });
-         // }
+         if (existing) {
+            return res.status(409).json({
+               message: 'Siswa sudah absen hari ini!',
+               type: 'warning'
+            });
+         }
 
          const waktu = new Date().toLocaleTimeString('id-ID', {
             hour: '2-digit',

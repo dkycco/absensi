@@ -2,41 +2,37 @@ const DataSiswa = require('../models/DataSiswa');
 const LogAbsensi = require('../models/LogAbsensi');
 const { Op } = require('sequelize');
 
-const today = new Date().toISOString().split('T')[0];
-
 module.exports = {
    index: async (req, res) => {
       try {
          const dataSiswa = await DataSiswa.findAll();
          const logAbsensi = await LogAbsensi.findAll();
          const totalDataSiswa = await DataSiswa.count();
-         const totalTepatWaktu = await LogAbsensi.count({
+
+         const today = new Date();
+         today.setHours(0, 0, 0, 0);
+         const tomorrow = new Date(today);
+         tomorrow.setDate(today.getDate() + 1);
+
+         const siswaSudahAbsen = await LogAbsensi.count({
+            distinct: true,
+            col: 'id',
             where: {
-               created_at: {
-                  [Op.between]: [
-                     new Date(`${today}T06:30:00+07:00`),
-                     new Date(`${today}T06:40:00+07:00`)
-                  ]
+               createdAt: {
+                  [Op.gte]: today,
+                  [Op.lt]: tomorrow
                }
             }
          });
 
-         const totalTelat = await LogAbsensi.count({
-            where: {
-               created_at: {
-                  [Op.gte]: new Date(`${today}T06:40:00+07:00`)
-               }
-            }
-         });
+         const totalAbsen = totalDataSiswa - siswaSudahAbsen;
 
          res.render('pages/dashboard', {
             layout: 'layouts/main-layout',
             title: 'Dashboard | SMK KORPRI SUMEDANG',
             controller: 'dashboard.index',
             totalDataSiswa,
-            totalTepatWaktu,
-            totalTelat
-
+            totalAbsen
          });
       } catch (err) {
          res.status(500).send('Terjadi kesalahan saat memuat halaman.');

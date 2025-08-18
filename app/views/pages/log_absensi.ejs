@@ -118,7 +118,7 @@
          <td>${data.id}</td>
          <td>${data.id_sidik_jari}</td>
          <td>${data.nama_lengkap}</td>
-         <td>${data.kelas}</td>
+         <td>${data.kelas.replace(/_/g, ' ').toUpperCase()}</td>
          <td>${data.waktu}</td>
          <td>
             ${color ? `<span class="badge ${color}">${data.status_siswa.charAt(0).toUpperCase() + data.status_siswa.slice(1)}</span>` : ''}
