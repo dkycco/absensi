@@ -32,7 +32,7 @@ module.exports = {
             allowNull: false
          },
          no_hp: {
-            type: Sequelize.STRING(17),
+            type: Sequelize.STRING(19),
             allowNull: false
          },
          created_at: {

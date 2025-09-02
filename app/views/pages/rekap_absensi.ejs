@@ -13,3 +13,80 @@
       </div>
    </div>
 </div>
+
+<div class="row">
+   <div class="col-md-6-lg-12">
+      <div class="card">
+         <div class="card-header">
+            <h5 class="card-title mb-0">Data Siswa</h5>
+         </div>
+         <div class="card-body">
+            <div class="row g-4 mb-3">
+               <div class="col-md-6">
+                  <div>
+                     <button type="button" class="btn btn-success" id="btnAbsensiManual">
+                        <i class="ri-add-line align-bottom me-1"></i> Absensi Manual
+                     </button>
+                  </div>
+               </div>
+               <table id="tableRekapAbsensi" class="">
+                  <thead>
+                     <tr>
+                        <th>No</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                     </tr>
+                     <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+
+   document.addEventListener('DOMContentLoaded', () => {
+      const idTable = 'tableRekapAbsensi';
+      const table = document.getElementById(idTable);
+
+     $('.select2').select2()
+   });
+</script>

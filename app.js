@@ -4,18 +4,27 @@ const http = require('http');
 const { Server } = require('socket.io');
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+const sequelize = require('./config/database');
 const webRoutes = require('./routes/web');
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+const store = new SequelizeStore({
+  db: sequelize,
+});
+
 app.use(session({
-    secret: 'qwerty',
-    resave: false,
-    saveUninitialized: false
+  secret: 'qwerty',
+  resave: false,
+  saveUninitialized: false,
+  store: store
 }));
+
+store.sync();
 
 app.use(express.urlencoded({
     extended: true

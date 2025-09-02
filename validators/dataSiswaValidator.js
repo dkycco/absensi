@@ -20,5 +20,5 @@ module.exports = [
 
   body('no_hp')
     .notEmpty().withMessage('Nomor HP wajib diisi!')
-    .isLength({ min: 10, max: 17 }).withMessage('Nomor HP tidak valid!')
+    .isLength({ min: 10, max: 19 }).withMessage('Nomor HP tidak valid!')
 ];
