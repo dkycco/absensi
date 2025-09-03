@@ -195,7 +195,7 @@ module.exports = {
          });
 
          try {
-            await axios.post("192.168.1.4:3010/api/whatsapp", {
+            await axios.post("192.168.1.4:4000/api/whatsapp", {
                api_key: process.env.WHATSAPP_API_KEY,
                no_hp,
                pesan
@@ -252,7 +252,7 @@ module.exports = {
       });
 
       try {
-         res.render('pages/form_log_absensi', {
+         res.render('pages/form_absensi_sekolah', {
             layout: false,
             title: false,
             is_create: false,

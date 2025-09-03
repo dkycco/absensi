@@ -1,4 +1,4 @@
-const LogAbsensi = require('../models/AbsensiSekolah');
+const AbsensiSekolah = require('../models/AbsensiSekolah');
 const DataSiswa = require('../models/DataSiswa');
 const APIKey = require('../models/APIKey');
 const { Op } = require('sequelize');
@@ -56,7 +56,7 @@ module.exports = {
             });
          }
 
-         const existing = await LogAbsensi.findOne({
+         const existing = await AbsensiSekolah.findOne({
             where: {
                nisn: dataSiswa.nisn,
                status_siswa,
@@ -122,7 +122,7 @@ module.exports = {
                 `)
          }
 
-         const log = await LogAbsensi.create({
+         const log = await AbsensiSekolah.create({
             nisn: dataSiswa.nisn,
             status_siswa: status_siswa,
             status_pesan: 'pending',
@@ -130,7 +130,7 @@ module.exports = {
          });
 
          try {
-            await axios.post("http://server.smkkorpri-sumedang.sch.id:3010/api/whatsapp", {
+            await axios.post("http://192.168.1.4:4000/api/whatsapp", {
                api_key: process.env.WHATSAPP_API_KEY,
                no_hp: dataSiswa.no_hp,
                pesan

@@ -321,7 +321,7 @@
          const btn = e.target.closest('.btn-view');
          if (btn) {
             const id = btn.getAttribute('data-id');
-            const response = await fetch('/log-absensi/lihat-data/' + id);
+            const response = await fetch('/absensi-sekolah/lihat-data/' + id);
             const html = await response.text();
             document.getElementById('modalContainer').innerHTML = html;
 

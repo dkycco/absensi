@@ -8,7 +8,7 @@ const DataSiswaController = require('../app/controllers/DataSiswaController');
 const RekapAbsensiController = require('../app/controllers/RekapAbsensiController');
 const AbsensiSekolahController = require('../app/controllers/AbsensiSekolahController');
 const APIKeyController = require('../app/controllers/APIKeyController');
-const APILogAbsensiController = require('../app/controllers/APILogAbsensiController');
+const APIAbsensiSekolahController = require('../app/controllers/APIAbsensiSekolahController');
 
 const { ensureAuthenticated, authorizeRoles } = require('../middleware/authMiddleware');
 
@@ -50,6 +50,6 @@ router.get('/api-key/edit/:id', ensureAuthenticated, authorizeRoles('webmaster')
 router.post('/api-key/update/:id', ensureAuthenticated, authorizeRoles('webmaster'), APIKeyController.update);
 router.delete('/api-key/:id', ensureAuthenticated, authorizeRoles('webmaster'), APIKeyController.destroy);
 
-router.post('/api/log-absensi', APILogAbsensiController.store);
+router.post('/api/absensi-sekolah', APIAbsensiSekolahController.store);
 
 module.exports = router;
