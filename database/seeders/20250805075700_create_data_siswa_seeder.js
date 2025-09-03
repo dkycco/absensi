@@ -11,7 +11,7 @@ module.exports = {
         nama_lengkap: "Sarif Saripudin",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Nurhayati",
-        no_hp: '+62 813-9556-4815',
+        no_hp: '+6281395564815',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -21,7 +21,7 @@ module.exports = {
         nama_lengkap: "Atep Sopiyan",
         kelas: 'xii_tkr',
         nama_orangtua_wali: "Titin",
-        no_hp: '+62 812-2359-07950',
+        no_hp: '+6281223590795',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -31,7 +31,7 @@ module.exports = {
         nama_lengkap: "Dwi Marsya Rhamadani",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Samsudin",
-        no_hp: '+62 852-94016-2990',
+        no_hp: '+6285294016299',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -71,7 +71,7 @@ module.exports = {
         nama_lengkap: "Nita",
         kelas: 'xi_rpl',
         nama_orangtua_wali: "Rohana",
-        no_hp: '+62 877-2270-32960',
+        no_hp: '+6287722703296',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -121,7 +121,7 @@ module.exports = {
         nama_lengkap: "Zia Ahsani Azmi",
         kelas: 'xi_rpl',
         nama_orangtua_wali: "Robiah",
-        no_hp: '+62 853-2105-31100',
+        no_hp: '+6285321053110',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -451,7 +451,7 @@ module.exports = {
         nama_lengkap: "Serina Camelia",
         kelas: 'xi_rpl',
         nama_orangtua_wali: "Ujang Suhendar",
-        no_hp: '+62 8572-3232-7510',
+        no_hp: '+6285723232751',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -461,7 +461,7 @@ module.exports = {
         nama_lengkap: "Nabila Apriliani",
         kelas: 'xi_rpl',
         nama_orangtua_wali: "Roni Cahyadi",
-        no_hp: '+62 8778-1434-3900',
+        no_hp: '+6287781434390',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -471,7 +471,7 @@ module.exports = {
         nama_lengkap: "Angga Lesmana",
         kelas: 'xi_rpl',
         nama_orangtua_wali: "Agus Jaenudin",
-        no_hp: '+62 8231-5029-0160',
+        no_hp: '+6282315029016',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -481,7 +481,7 @@ module.exports = {
         nama_lengkap: "Tina Herlina",
         kelas: 'xi_rpl',
         nama_orangtua_wali: "Ai Sariningsih",
-        no_hp: '+62 8314-9394-6870',
+        no_hp: '+6283149394687',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -521,7 +521,7 @@ module.exports = {
         nama_lengkap: "Rendi",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Enju",
-        no_hp: '+62 8522-7731-010',
+        no_hp: '+628522773101',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -551,7 +551,7 @@ module.exports = {
         nama_lengkap: "Selvi Amelia",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Kurniasih",
-        no_hp: '+62 8586-0192-5890',
+        no_hp: '+6285860192589',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -561,7 +561,7 @@ module.exports = {
         nama_lengkap: "Wisnu Ardiansyah",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Rohaeti",
-        no_hp: '+62 8212-0086-4510',
+        no_hp: '+6282120086451',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -571,7 +571,7 @@ module.exports = {
         nama_lengkap: "Marsel Elewarin",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Rahmat",
-        no_hp: '+62 8157-2614-7210',
+        no_hp: '+6281572614721',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -581,7 +581,7 @@ module.exports = {
         nama_lengkap: "Sandi Choerul Ramdan",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Erika Widiastuti",
-        no_hp: '+62 8180-7103-5750',
+        no_hp: '+6281807103575',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -611,7 +611,7 @@ module.exports = {
         nama_lengkap: "Gugun Gunawan",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Siti Mariah",
-        no_hp: '+62 8518-2079-1160',
+        no_hp: '+6285182079116',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -621,7 +621,7 @@ module.exports = {
         nama_lengkap: "Saepul",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Titin",
-        no_hp: '+62 8121-3727-8580',
+        no_hp: '+6281213727858',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -681,7 +681,7 @@ module.exports = {
         nama_lengkap: "Fauzi Nugraha",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Novi",
-        no_hp: '+62 8211-9016-6310',
+        no_hp: '+6282119016631',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -691,7 +691,7 @@ module.exports = {
         nama_lengkap: "Muhamad Alpi",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Ade Neni",
-        no_hp: '+62 8231-3282-1770',
+        no_hp: '+6282313282177',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -701,7 +701,7 @@ module.exports = {
         nama_lengkap: "Suryana",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Nana Supriatna",
-        no_hp: '+62 8157-4474-9670',
+        no_hp: '+6281574474967',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -711,7 +711,7 @@ module.exports = {
         nama_lengkap: "Rizki Maulana Kurniawan",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Warsih Wartini",
-        no_hp: '+62 8212-6209-8340',
+        no_hp: '+6282126209834',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -731,7 +731,7 @@ module.exports = {
         nama_lengkap: "Rizky Agung Gumelar",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Yeni Susilawati",
-        no_hp: '+96 6566-9967-150',
+        no_hp: '+966566996715',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -741,7 +741,7 @@ module.exports = {
         nama_lengkap: "Bara Gustian",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Siti Rokayah",
-        no_hp: '+62 8315-9539-9190',
+        no_hp: '+6283159539919',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -771,7 +771,7 @@ module.exports = {
         nama_lengkap: "Rifaldi Ilham Saputra",
         kelas: 'xii_otomotif',
         nama_orangtua_wali: "Musti",
-        no_hp: '+62 8211-8194-4930',
+        no_hp: '+6282118194493',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -781,7 +781,7 @@ module.exports = {
         nama_lengkap: "Puput Herliana",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Yanti Herliani",
-        no_hp: '+62 8529-4353-2730',
+        no_hp: '+6285294353273',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -791,7 +791,7 @@ module.exports = {
         nama_lengkap: "Tiara Khoirul Nissa",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Ratnasari",
-        no_hp: '+62 8593-0467-3100',
+        no_hp: '+6285930467310',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -801,7 +801,7 @@ module.exports = {
         nama_lengkap: "Reni",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Dedi",
-        no_hp: '+62 8954-1429-28520',
+        no_hp: '+62895414292852',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -821,7 +821,7 @@ module.exports = {
         nama_lengkap: "Sendy Ripaldy",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Rosita",
-        no_hp: '+62 8565-9848-3350',
+        no_hp: '+6285659848335',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -851,7 +851,7 @@ module.exports = {
         nama_lengkap: "Feisya",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Kusmana",
-        no_hp: '+62 8139-5108-8580',
+        no_hp: '+6281395108858',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -861,7 +861,7 @@ module.exports = {
         nama_lengkap: "Dani Ramdani",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Atin",
-        no_hp: '+62 8528-2589-7810',
+        no_hp: '+6285282589781',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -871,7 +871,7 @@ module.exports = {
         nama_lengkap: "Depgan Ramadan",
         kelas: 'xii_titl',
         nama_orangtua_wali: "Cucu Sudrajat",
-        no_hp: '+62 8881-4978-070',
+        no_hp: '+628881497807',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -891,7 +891,7 @@ module.exports = {
         nama_lengkap: "Muhamad Paisal",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Adis",
-        no_hp: '+62 8389-1787-6890',
+        no_hp: '+6283891787689',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -911,7 +911,7 @@ module.exports = {
         nama_lengkap: "Rayhan Nugraha",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Megasari",
-        no_hp: '+62 8513-3510-3870',
+        no_hp: '+6285133510387',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -921,7 +921,7 @@ module.exports = {
         nama_lengkap: "Muhamad Romi Alfadillah",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Emi Suhaemi",
-        no_hp: '+62 8221-5312-9040',
+        no_hp: '+6282215312904',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -931,7 +931,7 @@ module.exports = {
         nama_lengkap: "Nurdin Ramadan",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Olih Solihin",
-        no_hp: '+62 8983-8693-520',
+        no_hp: '+628983869352',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -941,7 +941,7 @@ module.exports = {
         nama_lengkap: "Gio Romansyah",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Selamat Solihat",
-        no_hp: '+62 8316-6024-6190',
+        no_hp: '+6283166024619',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -971,7 +971,7 @@ module.exports = {
         nama_lengkap: "Aprilian Permana",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Lina Marlina",
-        no_hp: '+62 8131-2497-3650',
+        no_hp: '+6281312497365',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -991,7 +991,7 @@ module.exports = {
         nama_lengkap: "Deni Setiawan",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Neneng Rosmanah",
-        no_hp: '+62 8212-6094-5230',
+        no_hp: '+6282126094523',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1011,7 +1011,7 @@ module.exports = {
         nama_lengkap: "Angga Trio Nugraha",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Ence Karmawan",
-        no_hp: '+62 8771-9260-3690',
+        no_hp: '+6287719260369',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1021,7 +1021,7 @@ module.exports = {
         nama_lengkap: "Isal Fauzi",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Titin Supriatin",
-        no_hp: '+62 8521-7004-8860',
+        no_hp: '+6285217004886',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1051,7 +1051,7 @@ module.exports = {
         nama_lengkap: "Gugun Gunawan",
         kelas: 'xi_otomotif',
         nama_orangtua_wali: "Jujun Suhanda",
-        no_hp: '+62 8518-2079-1160',
+        no_hp: '+6285182079116',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1071,7 +1071,7 @@ module.exports = {
         nama_lengkap: "Ajeng Putri Rahayu",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Encih Wawat",
-        no_hp: '+62 8521-5914-0590',
+        no_hp: '+6285215914059',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1081,7 +1081,7 @@ module.exports = {
         nama_lengkap: "Salsa Soraya",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Ipah Maryati",
-        no_hp: '+62 8132-2980-6120',
+        no_hp: '+6281322980612',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1091,7 +1091,7 @@ module.exports = {
         nama_lengkap: "Lasmini",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Ade Nursantika",
-        no_hp: '+62 8122-3130-7840',
+        no_hp: '+6281223130784',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1101,7 +1101,7 @@ module.exports = {
         nama_lengkap: "Siti Patimah",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Suryana",
-        no_hp: '+62 8231-9778-3030',
+        no_hp: '+6282319778303',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1121,7 +1121,7 @@ module.exports = {
         nama_lengkap: "Ai Wina Oktaviani",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Tayati",
-        no_hp: '+62 8211-4229-9500',
+        no_hp: '+6282114229950',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1161,7 +1161,7 @@ module.exports = {
         nama_lengkap: "Muhamad Sodikin",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Siti Hapsoh",
-        no_hp: '+62 8575-9138-6690',
+        no_hp: '+6285759138669',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1181,7 +1181,7 @@ module.exports = {
         nama_lengkap: "Ali Nurdiansyah",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Imas Susiawati",
-        no_hp: '+62 8212-8491-3410',
+        no_hp: '+6282128491341',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1191,7 +1191,7 @@ module.exports = {
         nama_lengkap: "Dani Setiawan",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Yayat Sutaryat",
-        no_hp: '+62 8212-6209-8340',
+        no_hp: '+6282126209834',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },
@@ -1201,7 +1201,7 @@ module.exports = {
         nama_lengkap: "Akbar Rizki",
         kelas: 'xii_rpl',
         nama_orangtua_wali: "Ahmed",
-        no_hp: '+62 8131-7549-1920',
+        no_hp: '+6281317549192',
         created_at: dayjs().format('YYYY-MM-DD HH:mm:ss'),
         updated_at: dayjs().format('YYYY-MM-DD HH:mm:ss')
       },

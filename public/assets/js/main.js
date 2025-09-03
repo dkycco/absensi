@@ -37,7 +37,7 @@ function formatNoHP(input) {
       result += '-' + rest.slice(3, 7);
    }
    if (rest.length > 7) {
-      result += '-' + rest.slice(7, 11);
+      result += '-' + rest.slice(7, 13);
    }
 
    input.value = result;
