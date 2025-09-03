@@ -1,5 +1,5 @@
 const DataSiswa = require('../models/DataSiswa');
-const LogAbsensi = require('../models/LogAbsensi');
+const LogAbsensi = require('../models/AbsensiSekolah');
 const { Op } = require('sequelize');
 
 module.exports = {

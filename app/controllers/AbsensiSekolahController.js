@@ -1,5 +1,5 @@
 const DataSiswa = require('../models/DataSiswa');
-const LogAbsensi = require('../models/LogAbsensi');
+const AbsensiSekolah = require('../models/AbsensiSekolah');
 const { Op } = require('sequelize');
 const dayjs = require('dayjs');
 const axios = require('axios')
@@ -15,7 +15,7 @@ module.exports = {
    index: async (req, res) => {
       try {
          const dataSiswa = await DataSiswa.findAll();
-         const dataLogAbsensi = await LogAbsensi.findAll({
+         const dataAbsensiSekolah = await AbsensiSekolah.findAll({
             where: {
                created_at: {
                   [Op.between]: [todayStart, todayEnd]
@@ -30,16 +30,16 @@ module.exports = {
             ]
          });
 
-         const createdAt = new Date(dataLogAbsensi.created_at);
+         const createdAt = new Date(dataAbsensiSekolah.created_at);
 
          const diffMinutes = (createdAt - jamMasuk) / (1000 * 60);
          const onTime = diffMinutes > 0 && diffMinutes <= 10;
 
-         res.render('pages/log_absensi', {
+         res.render('pages/absensi_sekolah', {
             layout: 'layouts/main-layout',
-            title: 'Log Absensi | SMK KORPRI SUMEDANG',
-            controller: 'log_absensi.index',
-            dataLogAbsensi,
+            title: 'Absensi Sekolah | SMK KORPRI SUMEDANG',
+            controller: 'absensi_sekolah.index',
+            dataAbsensiSekolah,
             dataSiswa,
             onTime
          });
@@ -53,7 +53,7 @@ module.exports = {
       try {
          const dataSiswa = await DataSiswa.findAll();
 
-         res.render('pages/form_log_absensi', {
+         res.render('pages/form_absensi_sekolah', {
             layout: false,
             title: false,
             is_create: true,
@@ -121,7 +121,7 @@ module.exports = {
             });
          }
 
-         const existing = await LogAbsensi.findOne({
+         const existing = await AbsensiSekolah.findOne({
             where: {
                nisn,
                status_siswa,
@@ -187,7 +187,7 @@ module.exports = {
             `)
          }
 
-         const created = await LogAbsensi.create({
+         const created = await AbsensiSekolah.create({
             nisn,
             status_siswa,
             status_pesan: 'pending',
@@ -195,7 +195,7 @@ module.exports = {
          });
 
          try {
-            await axios.post("http://server.smkkorpri-sumedang.sch.id:3010/api/whatsapp", {
+            await axios.post("192.168.1.4:3010/api/whatsapp", {
                api_key: process.env.WHATSAPP_API_KEY,
                no_hp,
                pesan
@@ -241,7 +241,7 @@ module.exports = {
       const {
          id
       } = req.params;
-      const data = await LogAbsensi.findOne({
+      const data = await AbsensiSekolah.findOne({
          where: {
             id
          },

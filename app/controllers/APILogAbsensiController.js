@@ -1,4 +1,4 @@
-const LogAbsensi = require('../models/LogAbsensi');
+const LogAbsensi = require('../models/AbsensiSekolah');
 const DataSiswa = require('../models/DataSiswa');
 const APIKey = require('../models/APIKey');
 const { Op } = require('sequelize');

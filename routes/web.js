@@ -6,7 +6,7 @@ const DashboardController = require('../app/controllers/DashboardController');
 const UsersController = require('../app/controllers/UsersController');
 const DataSiswaController = require('../app/controllers/DataSiswaController');
 const RekapAbsensiController = require('../app/controllers/RekapAbsensiController');
-const LogAbsensiController = require('../app/controllers/LogAbsensiController');
+const AbsensiSekolahController = require('../app/controllers/AbsensiSekolahController');
 const APIKeyController = require('../app/controllers/APIKeyController');
 const APILogAbsensiController = require('../app/controllers/APILogAbsensiController');
 
@@ -37,11 +37,11 @@ router.delete('/data-siswa/:id', ensureAuthenticated, authorizeRoles('webmaster'
 
 router.get('/rekap-absensi', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), RekapAbsensiController.index);
 
-router.get('/log-absensi', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), LogAbsensiController.index);
-router.get('/log-absensi/create', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), LogAbsensiController.create);
-router.post('/log-absensi/', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), LogAbsensiController.store);
-router.get('/log-absensi/cari-nisn/:nisn', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), LogAbsensiController.findNISN);
-router.get('/log-absensi/lihat-data/:id', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), LogAbsensiController.viewData);
+router.get('/absensi-sekolah', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.index);
+router.get('/absensi-sekolah/create', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.create);
+router.post('/absensi-sekolah/', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.store);
+router.get('/absensi-sekolah/cari-nisn/:nisn', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.findNISN);
+router.get('/absensi-sekolah/lihat-data/:id', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.viewData);
 
 router.get('/api-key', ensureAuthenticated, authorizeRoles('webmaster'), APIKeyController.index);
 router.get('/api-key/create', ensureAuthenticated, authorizeRoles('webmaster'), APIKeyController.create);

@@ -1,13 +1,13 @@
-<div class="modal zoomIn" id="modalLogAbsensi"
-   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="logAbsensiLabel">
+<div class="modal zoomIn" id="modalAbsensiSekolah"
+   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="AbsensiSekolahLabel">
    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id=""><%= is_create ? 'Form Absensi Manual' : 'Data Log Absensi' %></h5>
+            <h5 class="modal-title" id=""><%= is_create ? 'Form Absensi Sekolah Manual' : 'Data Absensi Sekolah' %></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
          </div>
-         <form action="" id="formLogAbsensi" method="POST" class="needs-validation" novalidate>
+         <form action="" id="formAbsensiSekolah" method="POST" class="needs-validation" novalidate>
             <div class="modal-body">
                <% if (is_create) { %>
                <div class="row mb-4">

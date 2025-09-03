@@ -1,12 +1,12 @@
 <div class="row">
    <div class="col-12">
       <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-         <h4 class="mb-sm-0">Log Absensi</h4>
+         <h4 class="mb-sm-0">Absensi Sekolah</h4>
 
          <div class="page-title-right">
             <ol class="breadcrumb m-0">
                <li class="breadcrumb-item active">Absensi</li>
-               <li class="breadcrumb-item active">Log Absensi</li>
+               <li class="breadcrumb-item active">Absensi Sekolah</li>
             </ol>
          </div>
 
@@ -18,7 +18,7 @@
    <div class="col-md-6-lg-12">
       <div class="card">
          <div class="card-header">
-            <h5 class="card-title mb-0">Log Absensi</h5>
+            <h5 class="card-title mb-0">Absensi Sekolah</h5>
          </div>
          <div class="card-body">
             <div class="row g-4 mb-3">
@@ -43,7 +43,7 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <% dataLogAbsensi.forEach( data => { %>
+                     <% dataAbsensiSekolah.forEach( data => { %>
                      <tr>
                         <td><%= data.id %></td>
                         <td><%= data.siswa?.id_sidik_jari %></td>
@@ -99,7 +99,7 @@
 <script>
    const socket = io();
 
-   function dataLogAbsensi(data) {
+   function dataAbsensiSekolah(data) {
       const row = document.createElement('tr');
       const badgeColors = {
          hadir: 'bg-success',
@@ -138,7 +138,7 @@
    }
 
    function handleFormSubmit(url) {
-      const form = document.getElementById('formLogAbsensi');
+      const form = document.getElementById('formAbsensiSekolah');
 
       form.addEventListener('submit', async function onSubmit(e) {
          e.preventDefault();
@@ -178,7 +178,7 @@
                return;
             }
 
-            const modal = bootstrap.Modal.getInstance(document.getElementById('modalLogAbsensi'));
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalAbsensiSekolah'));
             modal.hide();
             form.reset();
          } catch (err) {
@@ -202,7 +202,7 @@
       const fragment = document.createDocumentFragment();
 
       for (const data of list) {
-         const row = dataLogAbsensi(data);
+         const row = dataAbsensiSekolah(data);
          fragment.appendChild(row);
       }
 
@@ -222,20 +222,20 @@
       })
 
       btnAdd.addEventListener('click', async () => {
-         const response = await fetch('/log-absensi/create');
+         const response = await fetch('/absensi-sekolah/create');
          const html = await response.text();
          document.getElementById('modalContainer').innerHTML = html;
          
          $('.select2').select2({
-            dropdownParent: $('#modalLogAbsensi')
+            dropdownParent: $('#modalAbsensiSekolah')
          });
          
-         const modal = new bootstrap.Modal(document.getElementById('modalLogAbsensi'));
+         const modal = new bootstrap.Modal(document.getElementById('modalAbsensiSekolah'));
          modal.show();
                   
          $('#cari_nisn').on('change', async function () {
             const nisn = $(this).val();
-            const url = '/log-absensi/cari-nisn/' + nisn;
+            const url = '/absensi-sekolah/cari-nisn/' + nisn;
             
             try {
                const res = await fetch(url, {
@@ -314,7 +314,7 @@
             }
          });
 
-         handleFormSubmit('/log-absensi');
+         handleFormSubmit('/absensi-sekolah');
       });
 
       table.addEventListener('click', async (e) => {
@@ -326,10 +326,10 @@
             document.getElementById('modalContainer').innerHTML = html;
 
             $('.select2').select2({
-               dropdownParent: $('#modalLogAbsensi')
+               dropdownParent: $('#modalAbsensiSekolah')
             });
 
-            const modal = new bootstrap.Modal(document.getElementById('modalLogAbsensi'));
+            const modal = new bootstrap.Modal(document.getElementById('modalAbsensiSekolah'));
             modal.show();
          }
       })

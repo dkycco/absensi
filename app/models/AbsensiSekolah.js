@@ -3,9 +3,9 @@ const sequelize = require('../../config/database');
 const BaseModel = require('./BaseModel');
 const DataSiswa = require('./DataSiswa');
 
-class LogAbsensi extends BaseModel {}
+class AbsensiSekolah extends BaseModel {}
 
-LogAbsensi.init({
+AbsensiSekolah.init({
   id: {
     type: DataTypes.INTEGER(10),
     primaryKey: true,
@@ -24,10 +24,10 @@ LogAbsensi.init({
   tableName: 'log_absensi'
 });
 
-LogAbsensi.belongsTo(DataSiswa, {
+AbsensiSekolah.belongsTo(DataSiswa, {
   foreignKey: 'nisn',
   targetKey: 'nisn',
   as: 'siswa'
 });
 
-module.exports = LogAbsensi;
+module.exports = AbsensiSekolah;
