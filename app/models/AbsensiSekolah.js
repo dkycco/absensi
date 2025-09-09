@@ -21,7 +21,7 @@ AbsensiSekolah.init({
   created_at: DataTypes.DATE
 }, {
   sequelize,
-  tableName: 'log_absensi'
+  tableName: 'absensi_sekolah'
 });
 
 AbsensiSekolah.belongsTo(DataSiswa, {

@@ -1,0 +1,21 @@
+#table-rekap-absensi th,
+#table-rekap-absensi #no {
+   text-align: center;
+   vertical-align: middle;
+}
+
+.checkbox-hadir:disabled,
+.checkbox-pulang:disabled {
+  pointer-events: none;
+  opacity: 1;
+}
+
+.checkbox-hadir:checked {
+  background-color: #45CB85 !important;
+  border-color: #45CB85 !important;
+}
+
+.checkbox-pulang:checked {
+  background-color: #ffbe0b !important;
+  border-color: #ffbe0b !important;
+}

@@ -19,5 +19,8 @@
       "migrate:fresh": "node tools/migrate-seed.js",
       "make:migration": "node tools/make.js migration",
       "make:seeder": "node tools/make.js seeder"
+   },
+   "devDependencies": {
+      "@faker-js/faker": "^10.0.0"
    }
 }

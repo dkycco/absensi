@@ -16,60 +16,87 @@
 
 <div class="row">
    <div class="col-md-6-lg-12">
-      <div class="card">
-         <div class="card-header">
-            <h5 class="card-title mb-0">Data Siswa</h5>
-         </div>
-         <div class="card-body">
-            <div class="row g-4 mb-3">
-               <div class="table-responsive">
-                  <table class="table table-nowrap table-bordered">
-                     <thead>
-                        <tr>
-                           <th scope="col">No</th>
-                           <th scope="col">Nama</th>
-                           <th scope="col">NISN</th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                           <th scope="col"></th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-   
-                        </tr>
-                     </tbody>
-                  </table>
+      <% Object.keys(dataRekap).forEach(kelas => { %>
+         <div class="card">
+            <div class="card-header">
+               <h5 class="card-title mb-0">Kelas <%= kelas.replace(/_/g, ' ').toUpperCase() %></h5>
+            </div>
+            <div class="card-body">
+               <div class="row g-4 mb-3">
+                  <div class="table-responsive">
+                     <table id="table-rekap-absensi" class="table table-nowrap table-bordered">
+                        <thead>
+                           <tr>
+                              <th rowspan="2">NO</th>
+                              <th rowspan="2">NAMA</th>
+                              <th rowspan="2">NISN</th>
+                              <th colspan="<%= weekdays.length * 2 %>">TANGGAL</th>
+                           </tr>
+                           <tr>
+                              <% weekdays.forEach(tgl => { %>
+                              <th colspan="2"><%= tgl.getDate() %></th>
+                              <% }) %>
+                           </tr>
+                           <tr>
+                              <th colspan="3"></th>
+                              <% weekdays.forEach(tgl => { %>
+                              <th>H</th>
+                              <th>P</th>
+                              <% }) %>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <% dataRekap[kelas].forEach((siswa, index) => { %>
+                              <tr>
+                                 <td id="no"><%= index + 1 %></td>
+                                 <td class="text-start"><%= siswa.siswa.nama_lengkap %></td>
+                                 <td><%= siswa.siswa.nisn %></td>
+
+                                 <% weekdays.forEach(tgl => { 
+                                    const hadir = absenLogs.find(log => 
+                                       log.nisn === siswa.siswa.nisn &&
+                                       log.status_siswa === 'hadir' &&
+                                       new Date(log.created_at).toDateString() === tgl.toDateString()
+                                    );
+
+                                    const pulang = absenLogs.find(log => 
+                                       log.nisn === siswa.siswa.nisn &&
+                                       log.status_siswa === 'pulang' &&
+                                       new Date(log.created_at).toDateString() === tgl.toDateString()
+                                    );
+                                 %>
+                                    <td class="text-center">
+                                       <input type="checkbox" 
+                                          class="form-check-input checkbox-hadir" 
+                                          <%= hadir ? 'checked' : '' %> 
+                                          disabled
+                                       />
+                                    </td>
+                                    <td class="text-center">
+                                       <input type="checkbox" 
+                                          class="form-check-input checkbox-pulang" 
+                                          <%= pulang ? 'checked' : '' %> 
+                                          disabled
+                                       />
+                                    </td>
+                                 <% }) %>
+                              </tr>
+                           <% }) %>
+                        </tbody>
+                     </table>
+                  </div>
                </div>
             </div>
          </div>
-      </div>
+      <% }) %>
    </div>
 </div>
 
 <script>
-
    document.addEventListener('DOMContentLoaded', () => {
       const idTable = 'tableRekapAbsensi';
       const table = document.getElementById(idTable);
 
-     $('.select2').select2()
+      $('.select2').select2()
    });
 </script>
