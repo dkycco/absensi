@@ -14,6 +14,15 @@
    </div>
 </div>
 
+<div class="row mb-4">
+   <div class="col-md-4">
+      <div>
+         <label class="form-label mb-0">Bulan</label>
+         <input type="text" class="form-control">
+      </div>
+   </div>
+</div>
+
 <div class="row">
    <div class="col-md-6-lg-12">
       <% Object.keys(dataRekap).forEach(kelas => { %>
@@ -24,7 +33,7 @@
             <div class="card-body">
                <div class="row g-4 mb-3">
                   <div class="table-responsive">
-                     <table id="table-rekap-absensi" class="table table-nowrap table-bordered">
+                     <table id="tableRekapAbsensi" class="display table table-nowrap table-hover table-bordered">
                         <thead>
                            <tr>
                               <th rowspan="2">NO</th>
