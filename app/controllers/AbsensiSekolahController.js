@@ -8,9 +8,6 @@ const now = dayjs();
 const todayStart = now.startOf('day').toDate();
 const todayEnd = now.endOf('day').toDate();
 
-const jamMasuk = new Date();
-jamMasuk.setHours(6, 30, 0, 0);
-
 module.exports = {
    index: async (req, res) => {
       try {
@@ -30,18 +27,12 @@ module.exports = {
             ]
          });
 
-         const createdAt = new Date(dataAbsensiSekolah.created_at);
-
-         const diffMinutes = (createdAt - jamMasuk) / (1000 * 60);
-         const onTime = diffMinutes > 0 && diffMinutes <= 10;
-
          res.render('pages/absensi_sekolah', {
             layout: 'layouts/main-layout',
             title: 'Absensi Sekolah | SMK KORPRI SUMEDANG',
             controller: 'absensi_sekolah.index',
             dataAbsensiSekolah,
-            dataSiswa,
-            onTime
+            dataSiswa
          });
       } catch (error) {
          res.status(500).send('Terjadi kesalahan saat memuat halaman.');

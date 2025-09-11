@@ -18,7 +18,8 @@ AbsensiSekolah.init({
   status_siswa: DataTypes.ENUM('hadir', 'pulang'),
   status_pesan: DataTypes.ENUM('pending', 'terkirim', 'gagal'),
   pesan: DataTypes.TEXT,
-  created_at: DataTypes.DATE
+  created_at: DataTypes.DATE,
+  updated_at: DataTypes.DATE
 }, {
   sequelize,
   tableName: 'absensi_sekolah'

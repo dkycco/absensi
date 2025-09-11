@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const AbsensiSekolah = require('../models/AbsensiSekolah');
 const DataSiswa = require('../models/DataSiswa');
 
@@ -16,42 +17,99 @@ function getWeekdaysInMonth(year, month) {
 }
 
 module.exports = {
-   index: async (req, res) => {
-      try {
-         const dataRekap = await AbsensiSekolah.findAll({
-            include: [{
-               model: DataSiswa,
-               as: 'siswa',
-               attributes: ['nisn', 'nama_lengkap', 'kelas']
-            }],
-            order: [['created_at', 'ASC']]
-         });
+  index: async (req, res) => {
+    res.render('pages/rekap_absensi', {
+      layout: 'layouts/main-layout',
+      title: 'Rekap Absensi Sekolah | SMK KORPRI SUMEDANG',
+      controller: 'rekap_absensi.index',
+      dataRekap: {},
+      absenLogs: [],
+      weekdays: [],
+      kelasKeys: []
+    });
+  },
 
-         const groupedByKelas = {};
-         dataRekap.forEach(absen => {
-            const kelas = absen.siswa?.kelas || 'Tidak ada kelas';
-            if (!groupedByKelas[kelas]) groupedByKelas[kelas] = [];
-            if (!groupedByKelas[kelas].some(s => s.siswa.nisn === absen.siswa.nisn)) {
-               groupedByKelas[kelas].push(absen);
-            }
-         });
+  getData: async (req, res) => {
+    try {
+      const { periode } = req.params;
+      let year, month;
 
-         const absenLogs = dataRekap.map(a => a.toJSON());
-
-         const today = new Date();
-         const weekdays = getWeekdaysInMonth(today.getFullYear(), today.getMonth());
-
-         res.render('pages/rekap_absensi', {
-            layout: 'layouts/main-layout',
-            title: 'Rekap Absensi Sekolah | SMK KORPRI SUMEDANG',
-            controller: 'rekap_absensi.index',
-            dataRekap: groupedByKelas,
-            absenLogs,
-            weekdays
-         });
-      } catch (error) {
-         console.error(error);
-         res.status(500).send('Terjadi kesalahan saat mengambil data absensi');
+      if (periode) {
+        const [m, y] = periode.split('-');
+        month = parseInt(m, 10) - 1;
+        year = parseInt(y, 10);
+      } else {
+        const today = new Date();
+        year = today.getFullYear();
+        month = today.getMonth();
       }
-   }
+
+      const startDate = new Date(year, month, 1);
+      const endDate = new Date(year, month + 1, 0, 23, 59, 59);
+
+      const semuaSiswa = await DataSiswa.findAll({
+        attributes: ['nisn', 'nama_lengkap', 'kelas'],
+        order: [['kelas', 'ASC'], ['nama_lengkap', 'ASC']]
+      });
+
+      const dataAbsensi = await AbsensiSekolah.findAll({
+        include: [{
+          model: DataSiswa,
+          as: 'siswa',
+          attributes: ['nisn', 'nama_lengkap', 'kelas']
+        }],
+        where: {
+          created_at: { [Op.between]: [startDate, endDate] }
+        },
+        order: [['created_at', 'ASC']]
+      });
+
+      const absensiByNisn = {};
+      dataAbsensi.forEach(absen => {
+        if (!absensiByNisn[absen.siswa.nisn]) absensiByNisn[absen.siswa.nisn] = [];
+        absensiByNisn[absen.siswa.nisn].push(absen.toJSON());
+      });
+
+      const groupedByKelas = {};
+      semuaSiswa.forEach(siswa => {
+        const kelas = siswa.kelas || 'Tidak ada kelas';
+        if (!groupedByKelas[kelas]) groupedByKelas[kelas] = [];
+
+        groupedByKelas[kelas].push({
+          siswa: siswa.toJSON(),
+          absensi: absensiByNisn[siswa.nisn] || []
+        });
+      });
+
+      const kelasKeys = Object.keys(groupedByKelas).sort((a, b) => {
+        const A = a.toLowerCase();
+        const B = b.toLowerCase();
+
+        const order = ['x_', 'xi_', 'xii_'];
+        const getOrder = k => {
+          const idx = order.findIndex(prefix => k.startsWith(prefix));
+          return idx === -1 ? order.length : idx;
+        };
+
+        const orderA = getOrder(A);
+        const orderB = getOrder(B);
+
+        if (orderA !== orderB) return orderA - orderB;
+        return A.localeCompare(B);
+      });
+
+      const weekdays = getWeekdaysInMonth(year, month);
+
+      return res.json({
+        success: true,
+        dataRekap: groupedByKelas,
+        kelasKeys,
+        weekdays,
+        periode
+      });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, message: 'Gagal mengambil data absensi' });
+    }
+  }
 };

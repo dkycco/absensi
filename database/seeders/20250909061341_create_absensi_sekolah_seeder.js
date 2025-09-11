@@ -10,19 +10,23 @@ module.exports = {
 
     const data = [];
 
-    for (let i = 0; i < 121; i++) {
+    for (let i = 0; i < 500; i++) {
       const nisn = faker.helpers.arrayElement(nisnList);
       const statusSiswa = faker.helpers.arrayElement(['hadir', 'pulang']);
       const statusPesan = faker.helpers.arrayElement(['pending', 'terkirim', 'gagal']);
       const pesan = faker.lorem.sentence();
+      const randomDate2025 = faker.date.between({
+        from: new Date('2025-01-01T00:00:00Z'),
+        to: new Date('2025-12-31T23:59:59Z')
+      });
 
       data.push({
         nisn,
         status_siswa: statusSiswa,
         status_pesan: statusPesan,
         pesan,
-        created_at: faker.date.recent(7),
-        updated_at: new Date()
+        created_at: randomDate2025,
+        updated_at: randomDate2025
       });
     }
 

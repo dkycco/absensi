@@ -36,6 +36,7 @@ router.post('/data-siswa/update/:id', ensureAuthenticated, authorizeRoles('webma
 router.delete('/data-siswa/:id', ensureAuthenticated, authorizeRoles('webmaster', 'admin'), DataSiswaController.destroy);
 
 router.get('/rekap-absensi', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), RekapAbsensiController.index);
+router.get('/rekap-absensi/get-data/:periode', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), RekapAbsensiController.getData);
 
 router.get('/absensi-sekolah', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.index);
 router.get('/absensi-sekolah/create', ensureAuthenticated, authorizeRoles('webmaster', 'admin', 'guru'), AbsensiSekolahController.create);

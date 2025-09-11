@@ -14,98 +14,109 @@
    </div>
 </div>
 
-<div class="row mb-4">
-   <div class="col-md-4">
-      <div>
-         <label class="form-label mb-0">Bulan</label>
-         <input type="text" class="form-control">
-      </div>
-   </div>
-</div>
-
 <div class="row">
    <div class="col-md-6-lg-12">
-      <% Object.keys(dataRekap).forEach(kelas => { %>
-         <div class="card">
-            <div class="card-header">
-               <h5 class="card-title mb-0">Kelas <%= kelas.replace(/_/g, ' ').toUpperCase() %></h5>
-            </div>
-            <div class="card-body">
-               <div class="row g-4 mb-3">
-                  <div class="table-responsive">
-                     <table id="tableRekapAbsensi" class="display table table-nowrap table-hover table-bordered">
-                        <thead>
-                           <tr>
-                              <th rowspan="2">NO</th>
-                              <th rowspan="2">NAMA</th>
-                              <th rowspan="2">NISN</th>
-                              <th colspan="<%= weekdays.length * 2 %>">TANGGAL</th>
-                           </tr>
-                           <tr>
-                              <% weekdays.forEach(tgl => { %>
-                              <th colspan="2"><%= tgl.getDate() %></th>
-                              <% }) %>
-                           </tr>
-                           <tr>
-                              <th colspan="3"></th>
-                              <% weekdays.forEach(tgl => { %>
-                              <th>H</th>
-                              <th>P</th>
-                              <% }) %>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <% dataRekap[kelas].forEach((siswa, index) => { %>
-                              <tr>
-                                 <td id="no"><%= index + 1 %></td>
-                                 <td class="text-start"><%= siswa.siswa.nama_lengkap %></td>
-                                 <td><%= siswa.siswa.nisn %></td>
-
-                                 <% weekdays.forEach(tgl => { 
-                                    const hadir = absenLogs.find(log => 
-                                       log.nisn === siswa.siswa.nisn &&
-                                       log.status_siswa === 'hadir' &&
-                                       new Date(log.created_at).toDateString() === tgl.toDateString()
-                                    );
-
-                                    const pulang = absenLogs.find(log => 
-                                       log.nisn === siswa.siswa.nisn &&
-                                       log.status_siswa === 'pulang' &&
-                                       new Date(log.created_at).toDateString() === tgl.toDateString()
-                                    );
-                                 %>
-                                    <td class="text-center">
-                                       <input type="checkbox" 
-                                          class="form-check-input checkbox-hadir" 
-                                          <%= hadir ? 'checked' : '' %> 
-                                          disabled
-                                       />
-                                    </td>
-                                    <td class="text-center">
-                                       <input type="checkbox" 
-                                          class="form-check-input checkbox-pulang" 
-                                          <%= pulang ? 'checked' : '' %> 
-                                          disabled
-                                       />
-                                    </td>
-                                 <% }) %>
-                              </tr>
-                           <% }) %>
-                        </tbody>
-                     </table>
+      <div class="card">
+         <div class="card-body">
+            <div class="row d-flex justify-content-center">
+               <div class="col-md-4 text-center">
+                  <label for="flatpickr">Periode</label>
+                  <div class="input-group">
+                     <span class="input-group-text bg-success"><i class="bx bx-calendar text-white"></i></span>
+                     <input class="form-control" type="text" id="flatpickr" name="periode">
                   </div>
                </div>
             </div>
          </div>
-      <% }) %>
+      </div>
+   </div>
+
+   <div class="col-md-6-lg-12" id="tableRekap">
    </div>
 </div>
 
 <script>
-   document.addEventListener('DOMContentLoaded', () => {
-      const idTable = 'tableRekapAbsensi';
-      const table = document.getElementById(idTable);
+  document.addEventListener('DOMContentLoaded', () => {
+    const periodeInput = document.getElementById('flatpickr');
+    const container = document.querySelector('#tableRekap');
 
-      $('.select2').select2()
-   });
+    flatpickr("#flatpickr", {
+      plugins: [
+        new monthSelectPlugin({
+          shorthand: true,
+          dateFormat: "m-Y",
+          altFormat: "F Y"
+        })
+      ]
+    });
+
+    periodeInput.addEventListener("change", async function () {
+      const response = await fetch('/rekap-absensi/get-data/' + periodeInput.value);
+      const data = await response.json();
+
+      if (data.success) {
+        renderTable(data.dataRekap, data.weekdays, data.kelasKeys);
+      }
+    });
+
+    function renderTable(dataRekap, weekdays, kelasKeys) {
+      let html = '';
+      kelasKeys.forEach(kelas => {
+        html += `
+          <div class="card mt-3">
+            <div class="card-header">
+              <h5 class="card-title mb-0">Kelas ${kelas.replace(/_/g, ' ').toUpperCase()}</h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="display table table-nowrap table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th rowspan="2">NO</th>
+                      <th rowspan="2">NAMA</th>
+                      <th rowspan="2">NISN</th>
+                      <th colspan="${weekdays.length * 2}">TANGGAL</th>
+                    </tr>
+                    <tr>
+                      ${weekdays.map(t => `<th colspan="2">${new Date(t).getDate()}</th>`).join('')}
+                    </tr>
+                    <tr>
+                      <th colspan="3"></th>
+                      ${weekdays.map(() => `<th>H</th><th>P</th>`).join('')}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${dataRekap[kelas].map((row, idx) => {
+                      return `
+                        <tr>
+                          <td>${idx + 1}</td>
+                          <td class="text-start">${row.siswa.nama_lengkap}</td>
+                          <td>${row.siswa.nisn}</td>
+                          ${weekdays.map(t => {
+                            const hadir = row.absensi.find(log =>
+                              log.status_siswa === 'hadir' &&
+                              new Date(log.created_at).toDateString() === new Date(t).toDateString()
+                            );
+                            const pulang = row.absensi.find(log =>
+                              log.status_siswa === 'pulang' &&
+                              new Date(log.created_at).toDateString() === new Date(t).toDateString()
+                            );
+                            return `
+                              <td class="text-center"><input type="checkbox" class="form-check-input checkbox-hadir" ${hadir ? 'checked' : ''} disabled /></td>
+                              <td class="text-center"><input type="checkbox" class="form-check-input checkbox-pulang" ${pulang ? 'checked' : ''} disabled /></td>
+                            `;
+                          }).join('')}
+                        </tr>
+                      `;
+                    }).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+  });
 </script>

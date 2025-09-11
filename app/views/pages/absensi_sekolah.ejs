@@ -43,9 +43,9 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <% dataAbsensiSekolah.forEach( data => { %>
+                     <% dataAbsensiSekolah.forEach((data, index) => { %>
                      <tr>
-                        <td><%= data.id %></td>
+                        <td><%= index + 1 %></td>
                         <td><%= data.siswa?.id_sidik_jari %></td>
                         <td><%= data.siswa?.nama_lengkap %></td>
                         <td><%= data.siswa?.kelas.replace(/_/g, ' ').toUpperCase() %></td>
