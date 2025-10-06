@@ -2,10 +2,15 @@ const AbsensiSekolah = require('../models/AbsensiSekolah');
 const DataSiswa = require('../models/DataSiswa');
 const APIKey = require('../models/APIKey');
 const { Op } = require('sequelize');
-const dayjs = require('dayjs');
 const axios = require('axios')
 
-const now = dayjs();
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const now = dayjs().tz('Asia/Jakarta');
 const todayStart = now.startOf('day').toDate();
 const todayEnd = now.endOf('day').toDate();
 

@@ -1,10 +1,15 @@
 const DataSiswa = require('../models/DataSiswa');
 const AbsensiSekolah = require('../models/AbsensiSekolah');
 const { Op } = require('sequelize');
-const dayjs = require('dayjs');
 const axios = require('axios')
 
-const now = dayjs();
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const now = dayjs().tz('Asia/Jakarta');
 const todayStart = now.startOf('day').toDate();
 const todayEnd = now.endOf('day').toDate();
 
@@ -220,7 +225,7 @@ module.exports = {
       const {
          id
       } = req.params;
-      const data = await AbsensiSekolah.findOne({
+      const dataSiswa = await AbsensiSekolah.findOne({
          where: {
             id
          },
@@ -231,12 +236,12 @@ module.exports = {
       });
 
       try {
-         res.render('pages/form_absensi_sekolah', {
-            layout: false,
-            title: false,
-            is_create: false,
-            data
-         })
+         // res.render('pages/form_absensi_sekolah', {
+         //    layout: false,
+         //    title: false,
+         //    is_create: false,
+         //    dataSiswa
+         // })
       } catch (error) {
 
       }
