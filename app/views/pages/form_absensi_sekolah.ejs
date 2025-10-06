@@ -3,7 +3,7 @@
    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
          <div class="modal-header">
-            <h5 class="modal-title" id=""><%= is_create ? 'Form Absensi Sekolah Manual' : 'Data Absensi Sekolah' %></h5>
+            <h5 class="modal-title" id="">Form Absensi Sekolah Manual</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             </button>
          </div>
@@ -58,16 +58,16 @@
                <label class="form-label">Status Siswa</label>
                <div class="col">
                   <div class="form-check form-check-inline form-radio-primary mb-2">
-                     <input class="form-check-input" type="radio" name="status_siswa" id="hadir" value="hadir" <%= is_create ? '' : 'disabled' %>
-                        <%= (!is_create && data.status_siswa === 'hadir') ? 'checked' : '' %>>
+                     <input class="form-check-input" type="radio" name="status_siswa" id="hadir" value="hadir"
+                        <%= (data.status_siswa === 'hadir') ? 'checked' : '' %>>
                      <label class="form-check-label" for="hadir">
                         Hadir
                      </label>
                   </div>
    
                   <div class="form-check form-check-inline form-radio-primary mb-2">
-                     <input class="form-check-input" type="radio" name="status_siswa" id="pulang" value="pulang" <%= is_create ? '' : 'disabled' %>
-                        <%= (!is_create && data.status_siswa === 'pulang') ? 'checked' : '' %>>
+                     <input class="form-check-input" type="radio" name="status_siswa" id="pulang" value="pulang"
+                        <%= (data.status_siswa === 'pulang') ? 'checked' : '' %>>
                      <label class="form-check-label" for="pulang">
                         Pulang
                      </label>

@@ -1,7 +1,33 @@
 #tableRekapAbsensi th,
-#tableRekapAbsensi #no {
+#tableRekapAbsensi #no_index {
    text-align: center;
    vertical-align: middle;
+}
+
+#tableRekapAbsensi {
+  position: relative;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tableRekapAbsensi thead {
+  position: sticky;
+  top: 0px;
+  z-index: 3;
+}
+
+#tableRekapAbsensi tbody td:first-child {
+  position: sticky;
+  left: 0;
+  background-color: #ffff;
+  z-index: 3;
+}
+
+#tableRekapAbsensi tbody td:nth-child(2) {
+  position: sticky;
+  left: 40.07px;
+  background-color: #ffff;
+  z-index: 3;
 }
 
 .checkbox-hadir:disabled,

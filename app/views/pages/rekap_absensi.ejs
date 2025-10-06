@@ -1,31 +1,3 @@
-<style>
-table {
-  position: relative;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-thead {
-  position: sticky;
-  top: 0px;
-  z-index: 3;
-}
-
-tbody td:first-child {
-  position: sticky;
-  left: 0;
-  background-color: #ffff;
-  z-index: 3;
-}
-
-tbody td:nth-child(2) {
-  position: sticky;
-  left: 40.07px;
-  background-color: #ffff;
-  z-index: 3;
-}
-</style>
-
 <div class="row">
    <div class="col-12">
       <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -98,7 +70,7 @@ tbody td:nth-child(2) {
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="display table table-nowrap table-hover table-bordered table-striped-columns">
+                <table class="display table table-nowrap table-hover table-bordered table-striped-columns" id="#tableRekapAbsensi">
                   <thead>
                     <tr>
                       <th rowspan="2">NO</th>
@@ -118,7 +90,7 @@ tbody td:nth-child(2) {
                     ${dataRekap[kelas].map((row, idx) => {
                       return `
                         <tr>
-                          <td>${idx + 1}</td>
+                          <td id="no_index">${idx + 1}</td>
                           <td class="text-start">${row.siswa.nama_lengkap}</td>
                           <td>${row.siswa.nisn}</td>
                           ${weekdays.map(t => {
