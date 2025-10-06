@@ -101,13 +101,13 @@ module.exports = {
 
                     Dengan ini kami beritahukan bahwa ananda:
 
-                    Nama: ${dataSiswa.nama_lengkap}
-                    Kelas: ${dataSiswa.kelas.replace(/_/g, ' ').toUpperCase()}
-                    NISN: ${dataSiswa.nisn}
+                    Nama   : ${dataSiswa.nama_lengkap}
+                    Kelas  : ${dataSiswa.kelas.replace(/_/g, ' ').toUpperCase()}
+                    NISN   : ${dataSiswa.nisn}
 
                     Telah tercatat *hadir* di sekolah secara sistem pada pukul: *${waktu}*, tanggal: *${tanggal}*.
 
-                    _*Pesan ini terkirim secara otomatis oleh sistem, dimohon untuk tidak membalas pesan ini!_
+                    *_*Pesan ini terkirim secara otomatis oleh sistem, dimohon untuk tidak membalas pesan ini!_*
                 `)
          } else if (status_siswa === 'pulang') {
             pesan = textFormating(`
@@ -115,15 +115,15 @@ module.exports = {
                     
                     Dengan ini kami beritahukan bahwa ananda:
 
-                    Nama: ${dataSiswa.nama_lengkap}
-                    Kelas: ${dataSiswa.kelas.replace(/_/g, ' ').toUpperCase()}
-                    NISN: ${dataSiswa.nisn}
+                    Nama   : ${dataSiswa.nama_lengkap}
+                    Kelas  : ${dataSiswa.kelas.replace(/_/g, ' ').toUpperCase()}
+                    NISN   : ${dataSiswa.nisn}
 
                     Telah tercatat *pulang* dari sekolah secara sistem pada pukul: *${waktu}*, tanggal *${tanggal}*.
 
                     Kami menghimbau kepada Bapak/Ibu/Wali untuk dapat memastikan siswa telah tiba di rumah dengan selamat. Apabila ada kendala dalam perjalanan, dimohon untuk segera menghubungi pihak sekolah.
 
-                    _*Pesan ini terkirim secara otomatis oleh sistem, dimohon untuk tidak membalas pesan ini!_
+                    *_*Pesan ini terkirim secara otomatis oleh sistem, dimohon untuk tidak membalas pesan ini!_*
                 `)
          }
 
