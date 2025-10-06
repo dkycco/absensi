@@ -67,7 +67,19 @@ module.exports = {
       const absensiByNisn = {};
       dataAbsensi.forEach(absen => {
         if (!absensiByNisn[absen.siswa.nisn]) absensiByNisn[absen.siswa.nisn] = [];
-        absensiByNisn[absen.siswa.nisn].push(absen.toJSON());
+        
+        const json = absen.toJSON();
+        const createdAt = new Date(json.created_at);
+        json.tanggal_dibuat = createdAt.toLocaleString('id-ID', {
+          weekday: 'long',
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+
+        absensiByNisn[absen.siswa.nisn].push(json);
       });
 
       const groupedByKelas = {};
